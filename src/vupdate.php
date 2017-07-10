@@ -2,8 +2,8 @@
 /**
  * Semantic Version Updater
  *
- * Author: Ashley Kitson
- * Date: 11/07/16
+ * @author Ashley Kitson
+ * @license GPLV3.0 See LICENSE.md
  */
 include_once __DIR__ . '/../vendor' . '/autoload.php';
 

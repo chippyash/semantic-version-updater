@@ -1,6 +1,6 @@
 # Semantic Version Updater
 
-Build chain utility to update semantic version for a Satis/Composer library package
+Build chain utility to update semantic version for a Composer library package
  
 ## How
 
@@ -61,9 +61,20 @@ run `composer.phar update` to pull in the external libraries.
 
 Commit your changes as normal and push to repo and make a pull request.
  
-DO NOT run any `make` commands - these are used in the automation task. 
+### The make file
+
+
 
 ### Notes
 
 If you get `creating archive "/var/lib/jenkins/jobs/ci-version-updater-builder/workspace/bin/vupdate.phar" disabled by the php.ini setting phar.readonly `
 or something similar when using the make build tools, edit your php cli ini file and set `phar.readonly = Off`.
+
+## Acknowledgments
+
+I first wrote the vupdate.php script some years ago.  At that time it relied on the 
+'herrera-io/version' package from [Kevin Herrara](https://packagist.org/users/kherge/).  He's since abandoned that package, so
+I've included his original code in the source of this package.  It still works just fine.
+You can find it in the 'src' directory, along with his original tests in the 'test'
+directory.  He has a permissive license on his code, so feel free to use this package
+to get access to the original code if you need it in some other application.

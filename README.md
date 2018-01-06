@@ -1,7 +1,17 @@
 # Semantic Version Updater
 
-Build chain utility to update semantic version for a Composer library package
+Build chain utility to update the semantic version for a PHP package
  
+## Quality Assurance
+
+![PHP 5.6](https://img.shields.io/badge/PHP-5.6-blue.svg)
+![PHP 7](https://img.shields.io/badge/PHP-7-blue.svg)
+[![Build Status](https://travis-ci.org/chippyash/semantic-version-updater.svg)](https://travis-ci.org/chippyash/semantic-version-updater)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/e2dad65c6556353dae4b/test_coverage)](https://codeclimate.com/github/chippyash/semantic-version-updater/test_coverage)
+[![Maintainability](https://api.codeclimate.com/v1/badges/e2dad65c6556353dae4b/maintainability)](https://codeclimate.com/github/chippyash/semantic-version-updater/maintainability)
+
+See the [Test Contract](https://github.com/chippyash/semantic-version-updater/blob/master/docs/Test-Contract.md)
+
 ## How
 
 ### Initialisation
@@ -50,6 +60,35 @@ Use `bin/vupdate -h` to see the help screen.
 
 The real purpose of the utility is to get it used in the build chain, updating the tag, pushing to git and then
  updating the Satis/Composer (or other repo) to tell it that a new version is available.
+ 
+Here is a jenkins job that we use in our build chain to update the version dependent
+on the branch name prefix:
+
+<pre>
+VERSIONER=/usr/local/bin/vupdate
+GIT=git
+
+cd "${workingDir}";
+${GIT} checkout ${gitBranch};
+lastCommit=$(git log --branches | grep 'Merge pull request.* to master' | head -1)
+
+if [[ $lastCommit == *"feature/"* ]] || [[ $lastCommit == *"release/"* ]]
+then
+        ${VERSIONER} -p feature;
+        verType="Feature";
+else
+        ${VERSIONER};
+        verType="Patch";
+fi;
+
+
+${GIT} commit -am"CD $verType Version update: $lastCommit";
+cat VERSION | xargs ${GIT} tag;
+${GIT} push origin ${gitBranch} --tags;
+</pre>
+
+The $workingDir and $gitBranch parameters are sent to the job from the main build
+job.  $gitBranch defaults to 'master';
 
 ## Development
 
@@ -63,10 +102,10 @@ Commit your changes as normal and push to repo and make a pull request.
  
 ### The make file
 
-
+running `make` will rebuild the bin/vupdate phar file and push the changes to the repo.
+As such, it is only of any use to you if you have write access on the code repo.
 
 ### Notes
-
 If you get `creating archive "/var/lib/jenkins/jobs/ci-version-updater-builder/workspace/bin/vupdate.phar" disabled by the php.ini setting phar.readonly `
 or something similar when using the make build tools, edit your php cli ini file and set `phar.readonly = Off`.
 

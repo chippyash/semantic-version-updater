@@ -8,8 +8,12 @@ Build chain utility to update the semantic version for a PHP package
 ![PHP 7](https://img.shields.io/badge/PHP-7-blue.svg)
 [![Build Status](https://travis-ci.org/chippyash/semantic-version-updater.svg)](https://travis-ci.org/chippyash/semantic-version-updater)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/e2dad65c6556353dae4b/test_coverage)](https://codeclimate.com/github/chippyash/semantic-version-updater/test_coverage)
-[![Maintainability](https://api.codeclimate.com/v1/badges/e2dad65c6556353dae4b/maintainability)](https://codeclimate.com/github/chippyash/semantic-version-updater/maintainability)
 
+The above badges represent the current development branch.  As a rule, I don't push
+ to GitHub unless tests, coverage and usability are acceptable.  This may not be
+ true for short periods of time; on holiday, need code for some other downstream
+ project etc.  If you need stable code, use a tagged version.
+ 
 See the [Test Contract](https://github.com/chippyash/semantic-version-updater/blob/master/docs/Test-Contract.md)
 
 ## How

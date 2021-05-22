@@ -1,17 +1,25 @@
 {
-  "chmod":"0755",
-  "directories":[
-    "src"
-  ],
-  "finder": [
-    {
-      "name": "*.php",
-      "exclude": ["tests", "Tests"],
-      "in":"vendor"
-    }
-  ],
-  "main": "src/vupdate.php",
-  "output": "bin/vupdate.phar",
-  "stub": true,
-  "git-version":"package-version"
+    "chmod": "0755",
+    "directories": [
+        "src/Chippyash/Vupdate/Command",
+        "src/Herrera/Version"
+    ],
+    "files": [
+        "src/vupdate.php",
+        "./VERSION"
+    ],
+    "finder": [
+        {
+            "name": "*.php",
+            "exclude": [
+                "tests",
+                "Tests"
+            ],
+            "in": "vendor"
+        }
+    ],
+    "main": "src/vupdate.php",
+    "output": "bin/vupdate.phar",
+    "stub": true,
+    "git-version": "package-version"
 }

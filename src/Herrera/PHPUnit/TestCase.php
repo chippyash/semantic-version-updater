@@ -4,7 +4,7 @@ namespace Herrera\PHPUnit;
 
 use Herrera\PHPUnit\Exception\FileSystemException;
 use Herrera\PHPUnit\Exception\ReflectionException;
-use PHPUnit_Framework_TestCase;
+use PHPUnit\Framework\TestCase as PTestCase;
 use ReflectionClass;
 use ReflectionMethod;
 use ReflectionProperty;
@@ -15,7 +15,7 @@ use Symfony\Component\Process\ProcessBuilder;
  *
  * @author Kevin Herrera <kevin@herrera.io>
  */
-class TestCase extends PHPUnit_Framework_TestCase
+class TestCase extends PTestCase
 {
     /**
      * The list of paths to purge.
@@ -304,7 +304,7 @@ s    */
     /**
      * Purges the created paths and reverts changes made by Runkit.
      */
-    protected function tearDown()
+    protected function tearDown(): void
     {
         foreach ($this->purgePaths as $path) {
             if (file_exists($path)) {

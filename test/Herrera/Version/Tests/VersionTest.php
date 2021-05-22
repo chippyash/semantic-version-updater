@@ -1,5 +1,5 @@
 <?php
-
+declare(strict_types=1);
 namespace Herrera\Version\Tests;
 
 use Herrera\PHPUnit\TestCase;
@@ -122,7 +122,7 @@ class VersionTest extends TestCase
         $this->assertEquals('1.2.3-pre.1+build.1', (string) $this->version);
     }
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->version = new Version(
             1,

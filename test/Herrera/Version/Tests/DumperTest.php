@@ -1,5 +1,5 @@
 <?php
-
+declare(strict_types=1);
 namespace Herrera\Version\Tests;
 
 use Herrera\PHPUnit\TestCase;
@@ -36,7 +36,7 @@ class DumperTest extends TestCase
         );
     }
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->version = new Version(
             1,

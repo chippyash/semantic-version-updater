@@ -14,14 +14,14 @@ testSuiteLoaderFile="/path/to/StandardTestSuiteLoader.php"
          backupGlobals="true"
          backupStaticAttributes="false"
          bootstrap="./vendor/autoload.php"
-         cacheTokens="false"
+
          colors="false"
          convertErrorsToExceptions="true"
          convertNoticesToExceptions="true"
          convertWarningsToExceptions="true"
          forceCoversAnnotation="false"
-         mapTestClassNameToCoveredClassName="false"
-         printerClass="PHPUnit_TextUI_ResultPrinter"
+
+
          processIsolation="false"
          stopOnError="false"
          stopOnFailure="false"
@@ -36,14 +36,14 @@ testSuiteLoaderFile="/path/to/StandardTestSuiteLoader.php"
      ! The <filter> element and its children can be used to configure the
      ! blacklist and whitelist for the code coverage reporting.
      !-->
-    <filter>
-        <whitelist processUncoveredFilesFromWhitelist="true">
-            <directory>./src/Herrera/Version</directory>
-            <exclude>
-                <file>./src/vupdate.php</file>
-            </exclude>
-        </whitelist>
-    </filter>
+<!--    <filter>-->
+<!--        <whitelist processUncoveredFilesFromWhitelist="true">-->
+<!--            <directory>./src/Herrera/Version</directory>-->
+<!--            <exclude>-->
+<!--                <file>./src/vupdate.php</file>-->
+<!--            </exclude>-->
+<!--        </whitelist>-->
+<!--    </filter>-->
 
 
 </phpunit>

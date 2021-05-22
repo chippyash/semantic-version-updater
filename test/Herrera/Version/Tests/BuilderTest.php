@@ -1,5 +1,5 @@
 <?php
-
+declare(strict_types=1);
 namespace Herrera\Version\Tests;
 
 use Herrera\PHPUnit\TestCase;
@@ -203,10 +203,10 @@ class BuilderTest extends TestCase
 
     public function testSetBuildInvalid()
     {
-        $this->setExpectedException(
+        $this->expectException(
             'Herrera\\Version\\Exception\\InvalidIdentifierException',
-            'The identifier "+" is invalid.'
         );
+        $this->expectExceptionMessage('The identifier "+" is invalid.');
 
         $this->builder->setBuild(array('+'));
     }
@@ -220,10 +220,10 @@ class BuilderTest extends TestCase
 
     public function testSetMajorInvalid()
     {
-        $this->setExpectedException(
-            'Herrera\\Version\\Exception\\InvalidNumberException',
-            'The version number "x" is invalid.'
+        $this->expectException(
+            'Herrera\\Version\\Exception\\InvalidNumberException'
         );
+        $this->expectExceptionMessage('The version number "x" is invalid.');
 
         $this->builder->setMajor('x');
     }
@@ -237,10 +237,10 @@ class BuilderTest extends TestCase
 
     public function testSetMinorInvalid()
     {
-        $this->setExpectedException(
-            'Herrera\\Version\\Exception\\InvalidNumberException',
-            'The version number "x" is invalid.'
+        $this->expectException(
+            'Herrera\\Version\\Exception\\InvalidNumberException'
         );
+        $this->expectExceptionMessage('The version number "x" is invalid.');
 
         $this->builder->setMinor('x');
     }
@@ -254,10 +254,10 @@ class BuilderTest extends TestCase
 
     public function testSetPatchInvalid()
     {
-        $this->setExpectedException(
-            'Herrera\\Version\\Exception\\InvalidNumberException',
-            'The version number "x" is invalid.'
+        $this->expectException(
+            'Herrera\\Version\\Exception\\InvalidNumberException'
         );
+        $this->expectExceptionMessage('The version number "x" is invalid.');
 
         $this->builder->setPatch('x');
     }
@@ -273,15 +273,15 @@ class BuilderTest extends TestCase
 
     public function testSetPreReleaseInvalid()
     {
-        $this->setExpectedException(
-            'Herrera\\Version\\Exception\\InvalidIdentifierException',
-            'The identifier "+" is invalid.'
+        $this->expectException(
+            'Herrera\\Version\\Exception\\InvalidIdentifierException'
         );
+        $this->expectExceptionMessage('The identifier "+" is invalid.');
 
         $this->builder->setPreRelease(array('+'));
     }
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->builder = new Builder();
     }

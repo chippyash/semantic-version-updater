@@ -1,5 +1,5 @@
 <?php
-
+declare(strict_types=1);
 namespace Herrera\Version\Tests\Exception;
 
 use Herrera\PHPUnit\TestCase;

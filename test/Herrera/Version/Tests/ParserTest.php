@@ -1,5 +1,5 @@
 <?php
-
+declare(strict_types=1);
 namespace Herrera\Version\Tests;
 
 use Herrera\PHPUnit\TestCase;
@@ -34,10 +34,10 @@ class ParserTest extends TestCase
 
     public function testToComponentsInvalid()
     {
-        $this->setExpectedException(
-            'Herrera\\Version\\Exception\\InvalidStringRepresentationException',
-            'The version string representation "test" is invalid.'
+        $this->expectException(
+            'Herrera\\Version\\Exception\\InvalidStringRepresentationException'
         );
+        $this->expectExceptionMessage('The version string representation "test" is invalid.');
 
         Parser::toComponents('test');
     }
